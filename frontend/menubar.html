@@ -1,0 +1,81 @@
+  {% load static %}
+
+
+  <link rel="stylesheet" type="text/css" href='{% static "css/styles_main.css" %}' title="NavigationBar" media=screen>
+  
+  <!-- ========== HEADER ========== -->
+    <div class="head" id="header">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo">
+                    <a href="{% url 'dashboardview' %}" class="header__logo">
+                        <img src="{% static 'images/Metrocom.png' %}"> 
+                    </a>
+                </div>
+                
+                <h5 style="margin-left: 20em; color: black;">Welcome back, {{request.user}}</h5>
+                
+                <div>
+                    <a href="{% url 'profile' %}">
+                        <img src="{% static 'images/yogatama.jpg' %}" alt="user.html" class="header__img">
+                    </a>
+                </div>
+            </div>       
+        </header>
+    </div>
+
+    <!-- ========== NAV ========== -->
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                <a href="{% url 'index' %}" class="nav__link nav__logo"></a>
+
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Menu</h3>
+                        
+                        <a href="{% url 'dashboardview' %}" class="nav__link">
+                            <i class='bx bx-category nav__icon'></i>
+                            <span class="nav__name">Home</span>
+                        </a>
+
+                        <div class="nav__dropdown">
+                            <a href="{% url 'index' %}" class="nav__link active">
+                                <i class='bx bx-bar-chart nav__icon'></i>
+                                <span class="nav__name">Report</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="{% url 'websitemarketing' %}" class="nav__dropdown-item">Guru Dashboard</a>
+                                </div>
+                            </div>
+                        </div>
+                            <a href="{% url 'mail' %}" class="nav__link">
+                                <i class='bx bx-mail-send nav__icon '></i>
+                                <span class="nav__name">Mail</span>
+                            </a>
+
+                            <a href="{% url 'profile' %}" class="nav__link">
+                                <i class='bx bx-user nav__icon' ></i>
+                                <span class="nav__name">Profile</span>
+                            </a>
+
+                            <a href="{% url 'member' %}" class="nav__link">
+                                <i class='bx bxs-user-account nav__icon'></i>
+                                <span class="nav__name">Member</span>
+                            </a>
+
+                            <a href="{% url 'logout' %}" class="nav__link nav__logout">
+                                <i class='bx bx-log-out nav__icon' ></i>
+                                <span class="nav__name">Log Out</span>
+                            </a>
+                    </div>    
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+

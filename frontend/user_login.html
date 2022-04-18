@@ -1,0 +1,174 @@
+{% load static %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>sign in</title>
+</head>
+<body>
+    <style>
+        html,body {
+            height: 100%;
+        }
+
+        body.my-login-page {
+            background-color: #f7f9fb;
+            font-size: 14px;
+        }
+
+        .my-login-page .brand {
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 40px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .my-login-page .brand {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .image {
+            Display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .my-login-page .card-wrapper {
+            width: 400px;
+            margin-top: 20px;
+        }
+
+        .my-login-page .card {
+            border-color: transparent;
+            box-shadow: 0 4px 8px rgba(0,0,0,.05);
+        }
+
+       .card.fat {
+            width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .my-login-page .card .card-title {
+            margin-bottom: 30px;
+        }
+
+        .my-login-page .form-control {
+            border-width: 2.3px;
+        }
+
+        .my-login-page .form-group label {
+            width: 100%;
+        }
+
+        .my-login-page .btn.btn-block {
+            padding: 12px 10px;
+        }
+
+        .footer {
+            margin: 1em;
+            color: #888;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 425px) {
+            .my-login-page .card-wrapper {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            .my-login-page .card.fat {
+                padding: 0;
+            }
+
+            .my-login-page .card.fat .card-body {
+                padding: 15px;
+            }
+        }
+    </style>
+
+        <form method="POST">
+            {% csrf_token %}
+            <!-- <input type="text" name="username" placeholder="Username"/>
+            <input type="password" name="password" placeholder="Enter Password"/>
+            <input type="submit" value="login"/> -->
+            
+            <section class="h-100">
+                <div class="container h-100">
+                    <div class="row justify-content-md-center h-100">
+                        <div class="card-wrapper">
+                            <div class="brand">
+                                <img class="image" src="{% static 'images/Metrocom.png' %}" alt="logo">
+                            </div>
+                            <div class="card fat">
+                                <div class="card-body">
+                                    <h4 class="card-title">Login</h4>
+                                    <form method="POST" class="my-login-validation" novalidate="">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input id="username" type="text" class="form-control" name="username" value="" required autofocus>
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                            <div class="invalid-feedback">
+                                                Password is required
+                                            </div>
+                                        </div>
+                            
+                                        <div class="form-group m-0">
+                                            <button type="submit" class="btn btn-primary btn-block" value="login">
+                                                Login
+                                            </button>
+                                        </div>
+                                       
+                                        <div class="mt-4 text-center">
+                                            <a href="">Reset Password</a>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <p>If you don't have any account, please click <a href="{% url 'requestuser' %}">here.</a></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                Copyright &copy; 2021 &mdash; PT Metrocom Global Solusi 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+

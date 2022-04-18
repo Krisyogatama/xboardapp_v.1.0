@@ -1,0 +1,192 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<link id="mystylesheet" rel="stylesheet" type="text/css" href='{% static "css/styles_profile_dark.css" %}'>
+
+{% block content %} 
+        <style>
+        .container {
+            width: 83%;
+            background: transparent;
+            padding: 1em;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-radius: 12px;
+            /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        h6 {
+          color: #212121;
+          font-size: 35px;
+          margin-left: 20px;
+        }
+
+        img {
+          border-image: 100px;
+        }
+        
+        .darkmode--activated h6 {
+          color:#F4F0FA;
+          font-size: 35px;
+          margin-left: 20px;
+        }
+
+        b {
+          color: #212121;
+        }
+
+        .darkmode--activated b {
+          color: #F4F0FA;
+        }
+
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 2rem;
+            text-align: center;
+        }
+        .account-settings .user-profile .user-avatar {
+            margin: 0 0 1rem 0;
+        }
+        .account-settings .user-profile .user-avatar img {
+            width: 90%;
+            height: 400;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+        .account-settings .user-profile h5.user-name {
+            margin: 0 0 0.5rem 0;
+        }
+        .account-settings .user-profile h6.user-job {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #9fa8b9;
+        }
+        .account-settings .about {
+            margin: 2rem 0 0 0;
+            text-align: center;
+        }
+        .account-settings .about h5 {
+            margin: 0 0 15px 0;
+            color: #007ae1;
+        }
+        .account-settings .about p {
+            font-size: 0.825rem;
+        }
+        .form-control {
+            border: 1px solid #cfd1d8;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: .825rem;
+            background: #ffffff;
+            color: #2e323c;
+        }
+        
+        .card {
+            background: transparent;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+        }
+        </style>
+        
+        <div class="box">
+          <div class="container">
+            <div class="row gutters">
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="account-settings">
+                      <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="{{request.user.profile.Profile_pic.url}}" alt="Maxwell Admin">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="row gutters">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h6>Professional Details</h6>
+                      </div>
+            <div class="column">
+              <div class="col-md-9">
+                <div class="card card-body">
+                  
+                  <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                      <b>Full Name</b>
+                      <div class="form-group">
+                          <label for="fullName">{{form.Name}}</label>
+                      </div>
+
+                      <b>Work Phone</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.Phone}}</label>
+                      </div>
+
+                      <b>Work Email</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.Email}}</label>
+                      </div>
+
+                      <b>Job Title</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.Job_Title}}</label>
+                      </div>
+
+                      <b style="font-size: 12px;">Profile Picture</b>
+                      <div class="form-group">
+                        <label for="Profile_pic" style="font-size: 10px;">{{form.Profile_pic}}</label>
+                      </div>
+                      
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="col-md-9">
+                <div class="card card-body">
+                  
+                  <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   
+                      <b>Work Street</b>
+                      <div class="form-group">
+                          <label for="fullName">{{form.Street}}</label>
+                      </div>
+
+                      <b>Work City</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.City}}</label>
+                      </div>
+
+                      <b>Work Province</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.Province}}</label>
+                      </div>
+
+                      <b>Work State</b>
+                      <div class="form-group">
+                        <label for="fullName">{{form.State}}</label>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mb-2">Update</button>
+                  
+                    </form>
+                </div>
+              </div>
+            </div>
+            {% endblock %}

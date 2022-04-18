@@ -1,0 +1,150 @@
+{% extends 'main.html' %}
+{% load static %}
+
+    {% block content %}  
+    <style>
+        .row .column-search {
+            margin-top: 0px;
+            margin-left: 599px;
+            margin-bottom: -20px;
+            
+        }
+
+        .row .column-title {
+            margin-top: 0px;
+            margin-left: 13px;
+            margin-bottom: -40px;
+            font-size: 30px;
+            color: black;
+            font-weight: 500;
+        }
+
+        .img {
+            border-color: white;
+        }
+
+        .box {
+            background:transparent;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .form-control {
+            margin-left: 16em;
+        }
+        
+        h2 {
+            color: black;
+        }
+    
+        .darkmode--activated h6 {
+            color: white;
+        }
+    
+        .col-md-4 {
+        margin-top: 20px;
+        }   
+    
+        .card {
+            background-color: #EEEEEE;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+    
+        .darkmode--activated .card {
+            background-color: #212121;
+            box-shadow: rgba(199, 199, 199, 0.24) 0px 3px 8px;
+        }
+    
+        span.text-name {
+            color:#212121;
+            font-size: 17px;
+            font-weight: 700;
+        }
+    
+        .darkmode--activated span.text-name {
+            color: white;
+            font-size: 17px;
+        }
+        
+        span.text {
+            color:#212121;
+            font-size: 13px;
+        }
+    
+        .darkmode--activated span.text {
+            color: white;
+            font-size: 13px;
+        }
+        
+        .install span {
+        font-size: 12px
+        }
+        
+    </style>
+
+    <!-- ==== DASHBOARD VIEW ===== -->
+    <div class="box">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="column-title">Dashboard Catalog</div>
+                    <form calss="form" action="{% url 'dashboardview' %}" method="get">
+                        <div class="column-search">
+                            <div class="input-group mb-4">
+                                <input type="search" value="{{search_query}}" placeholder="Search Dashboard" aria-describedby="button-addon5" class="form-control" name="search_query">
+                                <div class="input-group-append">
+                                    <button id="button-addon5" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+            </div>
+        </div>
+
+        
+        <div class="container">  
+            <div class="row grid grid--three">
+                {% for dashboardview in dashboardviews %}  
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <div class="d-flex flex-row mb-3"><img src="{{dashboardview.icon_pic.url}}" width="70">
+                            <div class="d-flex flex-column ml-2"><span class="text-name">{{dashboardview.project_name}}</span><span class="text">{{dashboardview.bi_software}}</span></div>
+                        </div>
+                        <h6>{{dashboardview.dashboard_title}}</h6>
+                        <div class="d-flex justify-content-between install mt-3">
+                            <span></span>
+                            <a class="btn btn-info btn-sm" href="{{dashboardview.link_iframe}}" role="button">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>        
+    </div>
+
+    {% if dashboardviews.has_other_pages %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+        {% if dashboardviews.has_previous %}  
+        <li><a class="btn page-link" href="?page={{dashboardviews.previous_page_number}}">&#10094; Prev</a></li>
+        {% endif %}
+
+        {% for page in custom_range %}  
+            {% if page == dashboardviews.number %}
+                    <li class="page-item"><a type="button" class="btn btn-secondary" href="?page={{page}}">{{page}}</a></li>
+                    {% else %}
+                    <li class="page-item"><a type="button" class="btn btn-light" href="?page={{page}}">{{page}}</a></li>
+            {% endif %}
+        {% endfor %} 
+
+        {% if dashboardviews.has_next %}  
+        <li><a class="btn page-link" href="?page={{dashboardviews.next_page_number}}">Next &#10095;</a></li>
+        {% endif %}
+        
+        </ul>
+    </nav>
+    {% endif %}
+    {% endblock %}
+
+    
+        

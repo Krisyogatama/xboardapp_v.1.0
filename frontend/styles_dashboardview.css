@@ -1,0 +1,51 @@
+    .box {
+    background:transparent;
+    margin-top: 10px;
+    }
+    
+    h2 {
+        color: black;
+    }
+  
+    h6 {
+        color: black;
+    }
+  
+    .darkmode--activated h6 {
+        color: white;
+    }
+  
+    .col-md-4 {
+    margin-top: 20px;
+    }   
+  
+    .card {
+        background-color: #EEEEEE;
+    }
+  
+    .darkmode--activated .card {
+        background-color: #212121;
+    }
+  
+    span.text-name {
+        color:#212121;
+    }
+  
+    .darkmode--activated span.text-name {
+        color: white;
+    }
+    
+    span.text {
+        color:#212121;
+    }
+  
+    .darkmode--activated span.text {
+        color: white;
+  
+    }
+    
+    .install span {
+    font-size: 12px
+    }
+    
+  

@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<body>
+
+  {% block content %} 
+    <style>
+      h3 {
+        color: black;
+        margin-bottom: 20px;
+      }
+      .custom-table {
+        color: black;
+      }
+    </style>
+    <br>
+    <br>
+      <div class="content">
+        <div class="container">
+          <div class="row g-2"> 
+            <h3>Manage Employees</h3>
+                                    
+            <a href="{% url 'createuserform' %}" class="nav__link">
+              <button type="button" class="btn btn-outline-secondary btn-sm" style="float: right; margin-bottom: 15px; margin-left: 53em;">
+                <i class='bx bx-plus' > Add New</i>
+              </button>
+          </a>
+
+          
+              <div class="table-responsive custom-table-responsive">
+                <table class="table custom-table">
+                  <thead>
+                    <tr> 
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th> 
+                      <th scope="col">Job Title</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+        
+                    {% for member in members %}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{member.Name}}</td>
+                        <td>{{member.Job_Title}}</td>
+                        <td>{{member.Email}}</td>
+                        <td>{{member.Unit}}</td>
+                        <td>{{member.Status}}</td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'delete' member.id %}" title="">Delete</a>
+                      </tr>
+                    {% endfor %}
+                        
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+{% endblock %}
+</body>

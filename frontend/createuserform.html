@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}  
+
+    <style>
+        .container {
+            background-color: transparent;
+            width: 50%;
+            margin-top: 40px;
+            margin-left: 5px;
+        }
+
+        .form-group {
+            margin-top: 5px;
+        }
+        
+    </style>
+    
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}  
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <b>Full Name</b>
+                    <div class="form-group">
+                        <label for="fullName">{{form.Name}}</label>
+                    </div>
+
+                    <b>Work Email</b>
+                    <div class="form-group">
+                    <label for="fullName">{{form.Email}}</label>
+                    </div>
+
+                    <b>Job Title</b>
+                    <div class="form-group">
+                    <label for="fullName">{{form.Job_Title}}</label>
+                    </div>
+
+                    <b>Business Division/Unit</b>
+                    <div class="form-group">
+                    <label for="fullName">{{form.Unit}}</label>
+                    </div>
+
+                    <b>Status</b>
+                    <div class="form-group">
+                    <label for="fullName">{{form.Status}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2" href="{% url 'member' %}">Register</button>
+
+
+        </div>
+
+    </form>
+
+{% endblock %}
